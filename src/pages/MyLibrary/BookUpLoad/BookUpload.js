@@ -53,10 +53,8 @@ const BookUpload = props => {
       datas.append('bookFile', inputData.bookFile[0]);
       //formdata 확인용 콘솔입니다.
       for (let key of datas.keys()) {
-        console.log(key);
       }
       for (let value of datas.values()) {
-        console.log(value);
       }
     }
   };
