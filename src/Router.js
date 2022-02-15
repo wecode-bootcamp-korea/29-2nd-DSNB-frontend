@@ -12,7 +12,7 @@ function Router() {
       <Routes>
         <Route path="/footer" element={<Footer />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/productDetail" element={<ProductDetail />} />
+        <Route path="/productDetail/:id" element={<ProductDetail />} />
         <Route path="/productList" element={<ProductList />} />
         <Route path="/myLibrary" element={<MyLibrary />} />
       </Routes>
