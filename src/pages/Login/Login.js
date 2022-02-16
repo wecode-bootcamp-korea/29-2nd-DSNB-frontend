@@ -1,5 +1,6 @@
+import StarRating from '../ProductDetail/StarRating';
 const Login = () => {
-  return <div>hi</div>;
+  return <StarRating />;
 };
 
 export default Login;
