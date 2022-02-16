@@ -1,0 +1,45 @@
+{
+  "book": {
+    "name": "기만과 오만",
+    "publisher": "김기출판사",
+    "public_date": "1996-05-14T00:00:00",
+    "rating": 4.0,
+    "book_option": [
+      {
+        "id": 1,
+        "name": "전자책",
+        "price": 35000,
+        "discount": 10,
+        "is_discount": true
+      }
+    ],
+    "author": {
+      "name": "이주미",
+      "intro": "이주미를 거꾸로하면 미주미"
+    }
+  },
+  "author_write": [
+    {
+      "book_id": 1,
+      "title": "오만과 편견",
+      "img": "https://user-images.githubusercontent.com/2377807/154460533-c464a88f-9bff-4d6c-ab46-0ad7eedd02be.png",
+      "rating": "4.00",
+      "url": "/books/book/1"
+    },
+    {
+      "book_id": 2,
+      "title": "오만과 편견",
+      "img": "https://user-images.githubusercontent.com/2377807/154460533-c464a88f-9bff-4d6c-ab46-0ad7eedd02be.png",
+      "rating": "4.00",
+      "url": "/books/book/1"
+    },
+    {
+      "book_id": 8,
+      "title": "오만과 편견",
+      "img": "https://user-images.githubusercontent.com/2377807/154460533-c464a88f-9bff-4d6c-ab46-0ad7eedd02be.png",
+      "rating": "4.00",
+      "url": "/books/book/1"
+    }
+  ],
+  "result": "success"
+}
