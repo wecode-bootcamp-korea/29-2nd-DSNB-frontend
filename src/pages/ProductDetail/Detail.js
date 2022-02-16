@@ -18,12 +18,21 @@ const Detail = props => {
   const { name, publisher, rating, book_option, author, img } = list;
   const [pay, setPay] = useState(false);
   const [prev, setPrev] = useState(false);
+  const [userInfo, setUserInfo] = useState('');
 
   const handlePaymentButton = () => {
-    if (localStorage.getItem('token')) {
-      setPay(true);
-    } else {
+    if (localStorage.getItem('token') === null) {
       alert('로그인하세요');
+    } else {
+      fetch('http://10.58.7.81:8000/orders/info', {
+        method: 'GET',
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        }
+          .then(res => res.json())
+          .then(data => setUserInfo(data)),
+      });
+      setPay(true);
     }
   };
 
@@ -89,7 +98,14 @@ const Detail = props => {
             <FontAwesomeIcon className="heart" icon={faGift} size="lg" />
           </IconButton>
           <Buy onClick={handlePaymentButton}>소장하기</Buy>
-          <PaymentModal pay={pay} onCancel={handlePaymentModal} list={list} />
+          {localStorage.getItem('token') && (
+            <PaymentModal
+              pay={pay}
+              onCancel={handlePaymentModal}
+              list={list}
+              cash={userInfo}
+            />
+          )}
         </Icon>
       </BookDetail>
     </BookIntro>
