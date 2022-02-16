@@ -1,0 +1,205 @@
+[
+  {
+    "id": 1,
+    "country": "Korea",
+    "top": "39.5%",
+    "left": "87.5%",
+    "bookDatas": [
+      {
+        "id": 1,
+        "title": "운수좋은날",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 2,
+        "title": "운수좋은날",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 3,
+        "title": "운수좋은날",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "운수좋은날",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "country": "Europe",
+    "top": "33%",
+    "left": "50%",
+    "coordinate": [{ "top": "33%", "left": "50%" }],
+    "bookDatas": [
+      {
+        "id": 1,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 2,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 3,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "레미제라블",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "country": "Russia",
+    "top": "11%",
+    "left": "73%",
+    "coordinate": [{ "top": "11%", "left": "73%" }],
+    "bookDatas": [
+      {
+        "id": 1,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 2,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 3,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "country": "America",
+    "top": "32%",
+    "left": "12.5%",
+    "coordinate": [{ "top": "32%", "left": "12.5%" }],
+    "bookDatas": [
+      {
+        "id": 1,
+        "title": "1984",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 2,
+        "title": "1984",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 3,
+        "title": "1984",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "1984",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      },
+      {
+        "id": 4,
+        "title": "카르마조프가의 형제들",
+        "img": "https://picsum.photos/150/200",
+        "author": "jumi"
+      }
+    ]
+  }
+]
