@@ -6,23 +6,22 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 import { useNavigate } from 'react-router-dom';
 
-const PaymentModal = ({ pay, onCancel, list }) => {
+const PaymentModal = ({ pay, onCancel, list, cash }) => {
   const { book_id, img, name, book_option, author } = list;
   const handlePaymentModal = () => {
     onCancel();
   };
+  console.log(cash);
+  const afterCash = cash - book_option[0].dis_price;
 
   const navigate = useNavigate();
 
   const goToLibrary = () => {
-    fetch(`http://10.58.7.81/order`, {
+    fetch(`http://10.58.7.81/orders/buy`, {
       method: 'POST',
       body: JSON.stringify({
         book_id: book_id,
         book_option: book_option[0].id,
-        buyer: 1,
-        target_user: 1,
-        payment_id: 1,
         price: book_option[0].dis_price,
       }),
     })
@@ -64,7 +63,7 @@ const PaymentModal = ({ pay, onCancel, list }) => {
               style={{ marginLeft: '5px', color: '#F3C50C' }}
             />
           </Title>
-          <Cash>5000</Cash>
+          <Cash>{cash}</Cash>
         </MyCash>
         <UpdateCash>
           <Title>
@@ -74,7 +73,7 @@ const PaymentModal = ({ pay, onCancel, list }) => {
               style={{ marginLeft: '5px', color: '#F3C50C' }}
             />
           </Title>
-          <Cash>3000</Cash>
+          <Cash>{afterCash}</Cash>
         </UpdateCash>
       </CashBox>
       <Payment onClick={goToLibrary}>결제하기</Payment>

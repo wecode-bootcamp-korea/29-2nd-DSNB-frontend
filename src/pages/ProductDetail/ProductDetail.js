@@ -25,7 +25,6 @@ const ProductDetail = () => {
       });
   }, [params]);
 
-  console.log(bookData);
   useEffect(() => {
     fetch('http://10.58.7.81/books/rank')
       .then(res => res.json())
