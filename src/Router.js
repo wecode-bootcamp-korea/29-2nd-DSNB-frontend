@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
-import ProductList from './pages/ProductList/ProductList';
+import ProductsList from './pages/ProductsList/ProductsList';
 import MyLibrary from './pages/MyLibrary/MyLibrary';
 import Footer from './components/Footer/Footer';
 import Nav from './components/Nav/Nav';
@@ -13,8 +13,9 @@ function Router() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/" element={<Nav />} />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
-        <Route path="/productList" element={<ProductList />} />
+        <Route path="/productsList" element={<ProductsList />} />
         <Route path="/myLibrary" element={<MyLibrary />} />
+        <Route path="/productDetail" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>
   );
