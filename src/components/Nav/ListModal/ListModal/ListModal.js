@@ -5,6 +5,7 @@ import ProductCategoryList from './ProductCategoryList/ProductCategoryList';
 import FilterButton from './FilterButtons/FilterButton';
 import BookCard from './BookCard/BookCard';
 import Pagination from './Pagination/Pagination';
+import LibraryUrl from '../../../../FetchURL/LibrarayURL';
 
 const ListModal = ({ setIsListModalVisible }) => {
   const [category, setCategory] = useState([]);
@@ -16,28 +17,28 @@ const ListModal = ({ setIsListModalVisible }) => {
   const paginate = pageNubmer => setCurrentPage(pageNubmer);
 
   const fetchFilter = async () => {
-    const res = await axios.get(`http://10.58.7.150:8000/books/nav`);
+    const res = await axios.get(`${LibraryUrl}/books/nav`);
     setFilter(res.data.order);
   };
 
   const fetchCategories = async () => {
-    const res = await axios.get('http://10.58.7.150:8000/books/nav');
+    const res = await axios.get(`${LibraryUrl}/books/nav`);
     setCategory(res.data.categories);
     setLoading(false);
   };
 
   const fetchProducts = async () => {
-    const res = await axios.get('http://10.58.7.150:8000/books');
+    const res = await axios.get(`${LibraryUrl}/books`);
     setPosts(res.data.books);
   };
 
   const sortByCategory = async category => {
-    const res = await axios.get('http://10.58.7.150:8000/' + category);
+    const res = await axios.get(`${LibraryUrl}/` + category);
     setPosts(res.data.books);
   };
 
   const sortByFitler = async () => {
-    const res = await axios.get(`http://10.58.7.150:8000/books?order=latest`);
+    const res = await axios.get(`${LibraryUrl}/books/nation?order=highprice`);
     setPosts(res.data.books);
   };
 

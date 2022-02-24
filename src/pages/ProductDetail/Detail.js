@@ -5,6 +5,7 @@ import StarRatings from 'react-star-ratings';
 import PreviewModal from './PreviewModal';
 import PaymentModal from './PaymentModal';
 import * as thousand from '../../utils/thousand';
+import URL from '../../FetchURL/LibrarayURL';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeart,
@@ -24,14 +25,17 @@ const Detail = props => {
     if (localStorage.getItem('token') === null) {
       alert('로그인하세요');
     } else {
-      fetch('http://10.58.7.81:8000/orders/info', {
+      fetch(`${URL}/orders/info`, {
         method: 'GET',
         headers: {
           Authorization: localStorage.getItem('token'),
-        }
-          .then(res => res.json())
-          .then(data => setUserInfo(data)),
-      });
+        },
+      })
+        .then(res => res.json())
+        .then(data => {
+          const user = data.result;
+          setUserInfo(user[0].cash);
+        });
       setPay(true);
     }
   };

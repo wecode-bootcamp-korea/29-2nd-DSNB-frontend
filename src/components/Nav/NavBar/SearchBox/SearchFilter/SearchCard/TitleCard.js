@@ -9,6 +9,10 @@ const TitleCard = ({
 }) => {
   const navigate = useNavigate();
 
+  const goToDetail = id => {
+    navigate(`/productDetail/${id}`);
+  };
+
   return (
     <TitleCardWrapper>
       <SearchStandard>제목 결과</SearchStandard>
@@ -19,7 +23,7 @@ const TitleCard = ({
             setIsSearchFilterVisible(prev => !prev);
             setIsListModalVisible(false);
             setSearchInputValue('');
-            navigate(`/productDetail/${id}`);
+            goToDetail(id);
           }}
         >
           <BookTitle>『{title}』</BookTitle>

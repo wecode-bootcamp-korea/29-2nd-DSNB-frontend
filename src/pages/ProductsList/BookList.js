@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Book from './Book';
-import { URL } from './config';
+import URL from '../../FetchURL/LibrarayURL';
 
 const BookList = ({ option }) => {
   const [bookList, setBookList] = useState([]);

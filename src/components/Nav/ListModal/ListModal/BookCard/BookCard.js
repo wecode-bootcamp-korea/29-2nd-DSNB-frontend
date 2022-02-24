@@ -82,6 +82,9 @@ const CardImg = styled.img`
 `;
 
 const ProductName = styled.p`
+  width: 9vw;
+  overflow: hidden;
+  white-space: nowrap;
   padding: 1vh 0 0.2vh 0.2vh;
   font-weight: bold;
   font-family: 'Roboto';

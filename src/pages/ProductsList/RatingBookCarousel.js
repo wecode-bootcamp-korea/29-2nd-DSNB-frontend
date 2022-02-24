@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { URL } from './config';
+import URL from '../../FetchURL/LibrarayURL';
 import StarRatings from 'react-star-ratings';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

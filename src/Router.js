@@ -9,14 +9,13 @@ import Nav from './components/Nav/Nav';
 function Router() {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
-        <Route path="/footer" element={<Footer />} />
-        <Route path="/" element={<Nav />} />
+        <Route path="/" element={<ProductsList />} />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
-        <Route path="/productsList" element={<ProductsList />} />
         <Route path="/myLibrary" element={<MyLibrary />} />
-        <Route path="/productDetail" element={<ProductDetail />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

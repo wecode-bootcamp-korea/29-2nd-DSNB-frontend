@@ -7,11 +7,11 @@ const LibraryBooks = ({ bookData, setBookData }) => {
   const [bottonBox, setBottonBox] = useState(false);
   const [pageData, setPageData] = useState('');
 
-  const OpenButtonBox = () => {
+  const openButtonBox = () => {
     setBottonBox(bottonBox => !bottonBox);
   };
 
-  const OpenBooks = page => {
+  const openBook = page => {
     setBook(true);
     setPageData(page);
   };
@@ -19,16 +19,16 @@ const LibraryBooks = ({ bookData, setBookData }) => {
   return (
     <>
       <LibraryBooksBox
-        onMouseEnter={OpenButtonBox}
-        onMouseLeave={OpenButtonBox}
+        onMouseEnter={openButtonBox}
+        onMouseLeave={openButtonBox}
       >
         <Booksimg alt="" src={bookData.cover_image} />
         {bottonBox && (
           <ButtonBox>
-            <Button onClick={() => OpenBooks(bookData.bookmark)}>
+            <Button onClick={() => openBook(bookData.bookmark)}>
               이어 보기
             </Button>
-            <Button onClick={() => OpenBooks(1)}>처음 부터</Button>
+            <Button onClick={() => openBook(1)}>처음 부터</Button>
           </ButtonBox>
         )}
         {!bottonBox && <BooksInfo>총 1화</BooksInfo>}

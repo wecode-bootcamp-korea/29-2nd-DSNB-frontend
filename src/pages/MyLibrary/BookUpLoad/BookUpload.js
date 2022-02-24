@@ -59,12 +59,16 @@ const BookUpload = props => {
     }
   };
 
-  const CloseBookUpload = () => {
+  const deleteInputData = () => {
     setInputData({
       bookTitle: '',
       bookWritter: '',
       price: '',
     });
+  };
+
+  const CloseBookUpload = () => {
+    deleteInputData();
     deleteFileImage();
     setBookUploader(false);
   };
