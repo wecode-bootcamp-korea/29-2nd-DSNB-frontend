@@ -83,22 +83,23 @@ const InputValue = styled.span`
 `;
 
 const FilterWrapper = styled.section`
-position: absolute;
-width: 28vw;
-max-height: 39vh;
-min-height: 12vh;
-margin-top: 0.3vh;
-margin-left: 1.5vw;
-background-color: white;
-border-radius: 3px;
-box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px 3px;
-overflow-y: auto;
-overflow-x:hidden;
-overscroll-behavior-y: none;
-z-index: 12;
+  position: absolute;
+  width: 28vw;
+  max-height: 39vh;
+  min-height: 12vh;
+  margin-top: 0.3vh;
+  margin-left: 1.5vw;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px 3px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  z-index: 12;
 
-&::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
+  }
 `;
 
 export default SearchFilter;
