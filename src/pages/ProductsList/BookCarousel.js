@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import StarRatings from 'react-star-ratings';
-import { URL } from './config';
+import URL from '../../FetchURL/LibrarayURL';
 
 const BookCarousel = ({ className, backgroundColor, color, option }) => {
   const [bookList, setBookList] = useState([]);
@@ -18,9 +18,11 @@ const BookCarousel = ({ className, backgroundColor, color, option }) => {
         setBookList(res.result);
       });
   }, []);
+
   const bookDetail = id => {
     navigate(`/productDetail/${id}`);
   };
+
   return option === 'starRating' ? (
     <CarouselContainer>
       <SliderBox>

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import styled, { css } from 'styled-components';
 
-const ButtonsCard = ({ name, sortPriceToLow }) => {
+const ButtonsCard = ({ name, sortByFitler }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ const ButtonsCard = ({ name, sortPriceToLow }) => {
       <FilterButtons
         onClick={() => {
           setIsChecked(prev => !prev);
-          sortPriceToLow();
+          sortByFitler();
         }}
         isChecked={isChecked}
       >

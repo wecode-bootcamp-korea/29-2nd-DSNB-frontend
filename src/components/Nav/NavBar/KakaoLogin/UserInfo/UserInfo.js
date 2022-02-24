@@ -2,12 +2,10 @@ import styled from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import LogoutBtn from '../LogoutBtn/LogoutBtn';
 import theme from '../../../../../styles/theme';
-import { useNavigate } from 'react-router';
 
 const UserInfo = ({ setToken }) => {
   const [toggleUserMenu, setToggleUserMenu] = useState(false);
   const menuRef = useRef();
-  const navigate = useNavigate();
 
   const checkIfClickedOutside = e => {
     const condition =
@@ -40,7 +38,7 @@ const UserInfo = ({ setToken }) => {
           >
             <NameWrapper
               onClick={() => {
-                navigate('/myLibrary');
+                window.location.replace('/myLibrary');
               }}
             >
               {' '}
@@ -67,6 +65,7 @@ const UserName = styled.span`
   font-size: 18px;
   color: white;
   font-weight: bold;
+
   /* font-family: Song Myung; */
 `;
 
@@ -94,6 +93,7 @@ const UserMenu = styled.ul`
   margin-top: 30vh;
   background-color: white;
   box-shadow: rgb(0 0 0 / 30%) 3px 3px 10px 3px;
+  z-index: 1231;
 `;
 
 const MenuItems = styled.li`

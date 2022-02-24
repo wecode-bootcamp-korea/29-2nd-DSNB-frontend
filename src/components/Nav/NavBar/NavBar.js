@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import DsnbLogo from './DsnbLogo/DsnbLogo';
 import SearchBox from './SearchBox/SearchBox';
 import KakaoLogin from './KakaoLogin/KakaoLogin';
+import URL from '../../../FetchURL/LibrarayURL';
 
 const NavBar = ({ setIsListModalVisible, token, setToken }) => {
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -17,16 +18,12 @@ const NavBar = ({ setIsListModalVisible, token, setToken }) => {
   };
 
   const fetchAuthorData = async () => {
-    const res = await axios.get(
-      `http://10.58.7.81/books/?search=${searchInputValue}`
-    );
+    const res = await axios.get(`${URL}/books/?search=${searchInputValue}`);
     setAuthorData(res.data.result);
   };
 
   const fetchTitleData = async () => {
-    const res = await axios.get(
-      `http://10.58.7.81/books/?search=${searchInputValue}`
-    );
+    const res = await axios.get(`${URL}/books/?search=${searchInputValue}`);
     setTitleData(res.data.result);
   };
 
@@ -54,6 +51,7 @@ const Background = styled.section`
   height: 9vh;
   background-color: black;
   padding: 0 0 0 16vw;
+  z-index: 1000;
 `;
 
 export default NavBar;

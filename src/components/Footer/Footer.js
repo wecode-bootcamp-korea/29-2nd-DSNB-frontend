@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 
 const Footer = () => {
+  if (window.location.pathname === '/myLibrary') {
+    return null;
+  }
   return (
     <FooterWrapper>
       <MainItem>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import RankingBook from './RankingBook';
-import { URL } from './config';
+import URL from '../../FetchURL/LibrarayURL';
 
 const RankingBookList = () => {
   const [bookList, setBookList] = useState([]);

@@ -14,15 +14,12 @@ const OpenBook = props => {
   const [openInfo, setOpenInfo] = useState(false);
   const { width, height } = useViewPort();
 
-  function onDocumentLoadSuccess({ numPages }) {
+  const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
-  }
+  };
 
   const closeBook = e => {
-    setBook(false);
-    setPageData('');
-    setOpenInfo(false);
-    fetch(`${LibrarayURL()}/users/library`, {
+    fetch(`${LibrarayURL}/users/library`, {
       method: 'PATCH',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -35,7 +32,7 @@ const OpenBook = props => {
       .then(res => res.json())
       .then(result => {
         if (result.message === 'SUCCESS') {
-          fetch(`${LibrarayURL()}/users/library`, {
+          fetch(`${LibrarayURL}/users/library`, {
             method: 'GET',
             headers: {
               Authorization: localStorage.getItem('token'),
@@ -43,7 +40,14 @@ const OpenBook = props => {
           })
             .then(res => res.json())
             .then(result => {
-              setBookData(result.message);
+              if (result.message) {
+                setBookData(result.message);
+                setBook(false);
+                setPageData('');
+                setOpenInfo(false);
+              } else {
+                alert('페이지 저장에 실패했습니다. 다시 시도해주세요');
+              }
             });
         }
       });
@@ -72,7 +76,7 @@ const OpenBook = props => {
     }
   };
 
-  const ToggleInfo = () => {
+  const toggleInfo = () => {
     setOpenInfo(openInfo => !openInfo);
   };
 
@@ -133,7 +137,7 @@ const OpenBook = props => {
                 </Div>
               </InfoBox>
             )}
-            <InfoOpenButton onClick={ToggleInfo}>
+            <InfoOpenButton onClick={toggleInfo}>
               <ButtonArrow> {openInfo ? '>' : '<'}</ButtonArrow>
             </InfoOpenButton>
           </OpenBookTotal>

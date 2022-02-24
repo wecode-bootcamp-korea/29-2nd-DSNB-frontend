@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router';
 import LibraryBooks from './LibraryBooks/LibraryBooks';
 import BookUpload from './BookUpLoad/BookUpload';
 import LibrarayURL from '../../FetchURL/LibrarayURL';
@@ -9,22 +8,29 @@ const MyLibrary = () => {
   const [bookData, setBookData] = useState([]);
   const [bookUploader, setBookUploader] = useState(false);
   const [bookSearch, setBookSearch] = useState('');
-  const navigate = useNavigate();
+  const [token, setToken] = useState(null);
+
+  const getMethod = {
+    method: 'GET',
+    headers: {
+      Authorization: localStorage.getItem('token'),
+    },
+  };
 
   useEffect(() => {
-    fetch(`${LibrarayURL()}/users/library`, {
-      method: 'GET',
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-    })
+    const token = localStorage.getItem('token');
+    token && setToken(token);
+  }, []);
+
+  useEffect(() => {
+    fetch(`${LibrarayURL}/users/library`, getMethod)
       .then(res => res.json())
       .then(result => {
         setBookData(result.message);
       });
   }, []);
 
-  const OpenBookUpload = () => {
+  const openBookUpload = () => {
     setBookUploader(bookUploader => !bookUploader);
   };
 
@@ -35,18 +41,13 @@ const MyLibrary = () => {
   const doSearch = e => {
     if (e.key === 'Enter') {
       if (bookSearch.length > 0) {
-        fetch(`${LibrarayURL()}/users?search=${bookSearch}`, {
-          method: 'GET',
-          headers: {
-            Authorization: localStorage.getItem('token'),
-          },
-        })
+        fetch(`${LibrarayURL}/users?search=${bookSearch}`, getMethod)
           .then(res => res.json())
           .then(result => {
             setBookData(result.result);
           });
       } else {
-        fetch(`${LibrarayURL()}/users/library`, {
+        fetch(`${LibrarayURL}/users/library`, {
           method: 'GET',
           headers: {
             Authorization: localStorage.getItem('token'),
@@ -61,7 +62,7 @@ const MyLibrary = () => {
   };
 
   const goToHome = () => {
-    navigate('/productDetail');
+    window.location.replace('/');
   };
 
   const doLogoutUser = () => {
@@ -69,7 +70,8 @@ const MyLibrary = () => {
     Kakao.Auth.logout(() => {
       localStorage.clear();
       alert('로그아웃 되었습니다.');
-      navigate('/productDetail');
+      setToken(false);
+      window.location.replace('/');
     });
   };
 
@@ -104,10 +106,10 @@ const MyLibrary = () => {
             ))}
         </LibraryBooksContents>
       </LibraryBooksTotal>
-      <UploadButton onClick={OpenBookUpload}>Book UpLoad</UploadButton>
+      <UploadButton onClick={openBookUpload}>Book UpLoad</UploadButton>
       {bookUploader && (
         <>
-          <Modal onClick={OpenBookUpload} />
+          <Modal onClick={openBookUpload} />
           <BookUpload
             setBookUploader={setBookUploader}
             bookUploader={bookUploader}

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 import Detail from './Detail';
 import StarRatings from 'react-star-ratings';
+import URL from '../../FetchURL/LibrarayURL';
 
 const ProductDetail = () => {
   const [bookData, setBook] = useState('');
@@ -15,9 +16,8 @@ const ProductDetail = () => {
   const goToDetail = id => {
     navigate(`/productDetail/${id}`);
   };
-
   useEffect(() => {
-    fetch(`http://10.58.7.81/books/${params.id}`)
+    fetch(`${URL}/books/${params.id}`)
       .then(res => res.json())
       .then(data => {
         setBook(data);
@@ -26,7 +26,7 @@ const ProductDetail = () => {
   }, [params]);
 
   useEffect(() => {
-    fetch('http://10.58.7.81/books/rank')
+    fetch(`${URL}/books/rank`)
       .then(res => res.json())
       .then(data => {
         setChartList(data.ranks);
@@ -34,81 +34,73 @@ const ProductDetail = () => {
   }, []);
 
   return (
-    <>
-      <Nav>nav</Nav>
-      <Wrapper>
-        <SecondWrapper>
-          <BodyWrapper>
-            {bookData && (
-              <>
-                <Detail bookDetail={bookData.book} />
-                <SectionWrapper>
-                  <SectionTitle>저자 프로필</SectionTitle>
-                  <AuthorBox>
-                    <Name>{bookData.book.author.name}</Name>
-                    <Intro>{bookData.book.author.intro}</Intro>
-                    <MajorWork>대표저서</MajorWork>
-                    {majorData && (
-                      <MajorWrapper>
-                        {majorData.map(list => {
-                          return (
-                            <Major
-                              key={list.book_id}
-                              onClick={() => goToDetail(list.book_id)}
-                            >
-                              <BookImage alt="bookimage" src={list.img} />
-                              <MajorTitle>{list.title}</MajorTitle>
-                              <Star>
-                                <StarRatings
-                                  rating={parseInt(list.rating)}
-                                  starRatedColor="orange"
-                                  numberOfStars={5}
-                                  starDimension="13px"
-                                  name="rating"
-                                  starSpacing="0.5px"
-                                />
-                              </Star>
-                            </Major>
-                          );
-                        })}
-                      </MajorWrapper>
-                    )}
-                  </AuthorBox>
-                </SectionWrapper>
-              </>
-            )}
-          </BodyWrapper>
-          <SideWrapper>
-            {chartList.length > 0 && (
-              <Recommand>
-                <RecommandTitle>인기도서</RecommandTitle>
-                <ListWrapper>
-                  {chartList.map(list => {
-                    return (
-                      <List key={list.book_id}>
-                        <Chart>{list.num}위</Chart>
-                        <BookTitle>{list.title}</BookTitle>
-                      </List>
-                    );
-                  })}
-                </ListWrapper>
-              </Recommand>
-            )}
-          </SideWrapper>
-        </SecondWrapper>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <SecondWrapper>
+        <BodyWrapper>
+          {bookData && (
+            <>
+              <Detail bookDetail={bookData.book} />
+              <SectionWrapper>
+                <SectionTitle>저자 프로필</SectionTitle>
+                <AuthorBox>
+                  <Name>{bookData.book.author.name}</Name>
+                  <Intro>{bookData.book.author.intro}</Intro>
+                  <MajorWork>대표저서</MajorWork>
+                  {majorData && (
+                    <MajorWrapper>
+                      {majorData.map(list => {
+                        return (
+                          <Major
+                            key={list.book_id}
+                            onClick={() => goToDetail(list.book_id)}
+                          >
+                            <BookImage alt="bookimage" src={list.img} />
+                            <MajorTitle>{list.title}</MajorTitle>
+                            <Star>
+                              <StarRatings
+                                rating={parseInt(list.rating)}
+                                starRatedColor="orange"
+                                numberOfStars={5}
+                                starDimension="13px"
+                                name="rating"
+                                starSpacing="0.5px"
+                              />
+                            </Star>
+                          </Major>
+                        );
+                      })}
+                    </MajorWrapper>
+                  )}
+                </AuthorBox>
+              </SectionWrapper>
+            </>
+          )}
+        </BodyWrapper>
+        <SideWrapper>
+          {chartList.length > 0 && (
+            <Recommand>
+              <RecommandTitle>인기도서</RecommandTitle>
+              <ListWrapper>
+                {chartList.map(list => {
+                  return (
+                    <List key={list.book_id}>
+                      <Chart>{list.num}위</Chart>
+                      <BookTitle onClick={() => goToDetail(list.book_id)}>
+                        {list.title}
+                      </BookTitle>
+                    </List>
+                  );
+                })}
+              </ListWrapper>
+            </Recommand>
+          )}
+        </SideWrapper>
+      </SecondWrapper>
+    </Wrapper>
   );
 };
 const Intro = styled.div`
   padding: 0px 0px 20px 10px;
-`;
-const Nav = styled.div`
-  width: 100%;
-  height: 100px;
-  background-color: ${theme.background};
-  color: white;
-  font-size: 40px;
 `;
 
 const Wrapper = styled.div`
@@ -209,6 +201,7 @@ const BookTitle = styled.div`
   display: flex;
   justify-content: flex-end;
   font-size: 15px;
+  cursor: pointer;
 `;
 
 const Major = styled.div`

@@ -11,6 +11,9 @@ const Nav = () => {
     token && setToken(token);
   }, []);
 
+  if (window.location.pathname === '/myLibrary') {
+    return null;
+  }
   return (
     <>
       <NavBar
