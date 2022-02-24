@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import axios from 'axios';
+import URL from '../../../../../FetchURL/LibrarayURL';
 
 const { Kakao } = window;
 const LoginBtn = ({ setToken }) => {
@@ -10,7 +11,7 @@ const LoginBtn = ({ setToken }) => {
     Kakao.Auth.loginForm({
       success: data => {
         const fetchKakaoUserData = async () => {
-          const res = await axios.get('http://10.58.7.81/users/kakao-auth', {
+          const res = await axios.get(`${URL}/users/kakao-auth`, {
             headers: {
               Authorization: data.access_token,
             },

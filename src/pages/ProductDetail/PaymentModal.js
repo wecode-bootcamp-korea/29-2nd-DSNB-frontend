@@ -4,21 +4,22 @@ import { faX, faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
-import { useNavigate } from 'react-router-dom';
+import URL from '../../FetchURL/LibrarayURL';
 
 const PaymentModal = ({ pay, onCancel, list, cash }) => {
   const { book_id, img, name, book_option, author } = list;
   const handlePaymentModal = () => {
     onCancel();
   };
-  console.log(cash);
-  const afterCash = cash - book_option[0].dis_price;
 
-  const navigate = useNavigate();
+  const afterCash = parseInt(cash) - parseInt(book_option[0].dis_price);
 
   const goToLibrary = () => {
-    fetch(`http://10.58.7.81/orders/buy`, {
+    fetch(`${URL}/orders/buy`, {
       method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
       body: JSON.stringify({
         book_id: book_id,
         book_option: book_option[0].id,
@@ -27,16 +28,17 @@ const PaymentModal = ({ pay, onCancel, list, cash }) => {
     })
       .then(res => res.json())
       .then(result => {
-        if (result.message === 'success') {
+        if (result.message === 'SUCCESS') {
           alert('결제 완료되었습니다.');
-          document.location.href = 'myLibrary';
-        } else if (result.message === 'low_cash') {
+          window.location.replace('/myLibrary');
+        } else if (result.message === 'LOW_CASH') {
           alert('코인을 충전해주세요');
         } else {
-          alert('구매 완료된 책은 내 서재 페이지에서 확인하실 수 있습니다.');
+          alert(
+            '이미 구매 완료된 책은 내 서재 페이지에서 확인하실 수 있습니다.'
+          );
         }
       });
-    navigate('/myLibrary');
   };
 
   return (
@@ -63,7 +65,7 @@ const PaymentModal = ({ pay, onCancel, list, cash }) => {
               style={{ marginLeft: '5px', color: '#F3C50C' }}
             />
           </Title>
-          <Cash>{cash}</Cash>
+          <Cash>{thousand.thousand(cash)}</Cash>
         </MyCash>
         <UpdateCash>
           <Title>
@@ -73,7 +75,7 @@ const PaymentModal = ({ pay, onCancel, list, cash }) => {
               style={{ marginLeft: '5px', color: '#F3C50C' }}
             />
           </Title>
-          <Cash>{afterCash}</Cash>
+          <Cash>{thousand.thousand(afterCash)}</Cash>
         </UpdateCash>
       </CashBox>
       <Payment onClick={goToLibrary}>결제하기</Payment>

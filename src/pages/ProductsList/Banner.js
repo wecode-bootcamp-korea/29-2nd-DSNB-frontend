@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationPin } from '@fortawesome/free-solid-svg-icons';
 import Slider from 'react-slick';
 import styled from 'styled-components';
-import { URL } from './config';
+import URL from '../../FetchURL/LibrarayURL';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

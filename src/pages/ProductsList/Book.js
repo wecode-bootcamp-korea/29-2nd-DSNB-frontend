@@ -19,7 +19,9 @@ const Book = ({
     starDimension: '11px',
     starSpacing: '0',
   };
+
   const navigate = useNavigate();
+
   const bookDetail = id => {
     navigate(`/productDetail/${id}`);
   };

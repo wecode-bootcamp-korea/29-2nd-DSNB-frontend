@@ -31,7 +31,7 @@ const NavCategory = ({ isListModalVisible, setIsListModalVisible }) => {
         <MainCategory
           onClick={() => {
             if (localStorage.getItem('token')) {
-              navigate('/myLibrary');
+              window.location.replace('/myLibrary');
             } else {
               Kakao.Auth.loginForm();
             }
